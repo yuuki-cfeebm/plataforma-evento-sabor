@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #ED9224;
+}
+
+* {
+  font-family: 'Open-Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, p, a, button, ul, li {
+  list-style: none;
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: white;
+}
+
+body {
+  background: black;
+}
+
+
+.background-img {
+  background-image: url("assets/img/img-mesa-teste.png");
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  height: 100vh;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to bottom, black 20%, transparent);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1500px;
+  width: 100%;
+  padding: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.container-logo {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+ul {
+  max-width: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-nav a{
+  font-size: 20px;
+  padding: 16px;
+  font-weight: bold;
+}
+
+.container-button button {
+  font-size: 20px;
+  padding: 16px;
+  background: var(--primary-color);
+  border-radius: 8px;
+}
+
