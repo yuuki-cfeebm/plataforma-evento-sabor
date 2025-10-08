@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --primary-color: #ED9224;
+  --background-sobre: #FDF7E5;
+  --terracota: #AF3E3E;
   --cinza-1: #DCDCDC;
   --cinza-2: #919191;
   --cinza-3: #57564F;
@@ -9,7 +12,6 @@
 }
 
 * {
-  font-family: 'Open-Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -23,15 +25,20 @@ h1, p, a, button, ul, li {
 }
 
 body {
+  font-family: 'Open-Sans', sans-serif;
   background: black;
 }
 
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/*-------header--------*/
 
 .background-img {
   background-image: url("assets/img/img-mesa-teste.png");
   background-size: cover;
   background-position: center;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   color: white;
 }
@@ -40,7 +47,11 @@ header {
   display: flex;
   justify-content: center;
   width: 100%;
-  background: linear-gradient(to bottom, black 20%, transparent);
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(2px);
+  box-shadow: 0px -1px 10px var(--cinza-4);
+  position: fixed;
+  z-index: 10;
 }
 
 nav {
@@ -93,17 +104,23 @@ ul {
   background: var(--cinza-1);
   color: var(--primary-color);
 }
+/*---------------*/
+
 
 main {
   width: 100%;
+  height: 100%;
   /* min-width: 100vh; */
 }
 
-#section-home {
+/*------section-home---------*/
+
+.section-styles {
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -135,7 +152,7 @@ main {
 }
 
 .texto-medio {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -143,8 +160,12 @@ main {
   color: var(--cinza-1);
 }
 
-.texto-destaque {
+.texto-destaque-laranja {
   color: var(--primary-color);
+}
+
+.texto-destaque-vermelho {
+  color: var(--terracota);
 }
 
 .button-pedido button{
