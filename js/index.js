@@ -28,7 +28,9 @@ document.querySelectorAll('.container-carousel').forEach(carrossel => {
     container.scrollBy({ left: 724, behavior: 'smooth' });
   });
 });
- 
+
+/*----FOOOTTTERRR-----*/
+
 // Ação do botão "Fazer pedido"
 document.getElementById('fazerPedido').addEventListener('click', () => {
   alert('Seu pedido foi iniciado!');
@@ -37,5 +39,10 @@ document.getElementById('fazerPedido').addEventListener('click', () => {
 // ======== BOTÃO VOLTAR AO TOPO ========
 document.getElementById("topBtn").addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
+  console.log("topo")
 });
- 
+
+// Ação do botão "Fazer pedido"
+document.getElementById('fazerPedido').addEventListener('click', () => {
+  alert('Seu pedido foi iniciado!');
+});

@@ -446,6 +446,85 @@ main {
   margin-bottom: 10px;
 }
 
+/*----FOOTER----*/
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #111;
+  color: #ddd;
+}
+ 
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  width: 100%;
+  padding: 100px 32px;
+}
+ 
+.logo-footer {
+  width: 120px;
+  height: 70px;
+  background: #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+ 
+.socials {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.socials a img {
+  width: 40px;
+}
+ 
+#topBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid var(--primary-color);
+  color: white;
+  padding: 20px 36px;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#topBtn p {
+  font-size: 18px;
+}
+ 
+#topBtn:hover {
+  background: #ff9e1f;
+}
+ 
+.footer-right {
+  display: flex;
+  gap: 80px;
+}
+ 
+.footer-right h4 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+ 
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+ 
+.footer-right li {
+  margin-bottom: 5px;
+  color: #bbb;
+}
+
 /*---classes-reutilizadas---*/
 .bold {
   font-weight: bold;
@@ -456,6 +535,8 @@ main {
   flex-direction: column;
   gap: 32px;
 }
+
+
 
 
 
