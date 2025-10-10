@@ -135,7 +135,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  padding: 32px 16px; 
   
 }
 
@@ -199,7 +199,7 @@ main {
   transition: 0.3s;
 }
 
-.button-pedido img:hover { /*estou tentar mudar a cor do icon, mas não funfa*/
+.button-pedido img:hover {
   color: var(--primary-color);
 }
 
@@ -223,27 +223,11 @@ main {
   background: var(--background-sobre);
 }
 
-/* .linha { linha da esquerda grande e da direita pequena foda
-  width: 12px;
-  height: 100%;
-  background: var(--terracota);
-} */
-
 .container-item-sobre {
   display: flex;
   gap: 16px;
   padding-left: 16px;
 }
-
-/* .flexColgap32::after {
-  width: 10px;
-  background: var(--terracota);
-  color: var(--terracota);
-  height: 10px;
-  padding: 10px;
-  position: relative;
-
-} */
 
 .container-item-sobre::after{
   width: 10px;
@@ -464,6 +448,11 @@ footer {
   width: 100%;
   padding: 100px 32px;
 }
+
+.footer-left {
+  max-width: 30%;
+  width: 100%;
+}
  
 .logo-footer {
   width: 120px;
@@ -507,24 +496,37 @@ footer {
  
 .footer-right {
   display: flex;
+  max-width: 60%;
+  width: 100%;
   gap: 80px;
-}
- 
-.footer-right h4 {
-  margin-bottom: 10px;
-  color: #fff;
-}
- 
-.footer-right ul {
-  list-style: none;
-  padding: 0;
-}
- 
-.footer-right li {
-  margin-bottom: 5px;
-  color: #bbb;
+  justify-content: flex-end;
 }
 
+.footer-right ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding-left: 8px;
+  gap: 8px;
+  margin-top: 8px;
+  min-width: 150px;
+}
+
+.footer-item h4 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-item li a{
+  font-size: 16px;
+  color: var(--cinza-2);
+}
 /*---classes-reutilizadas---*/
 .bold {
   font-weight: bold;
