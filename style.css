@@ -92,7 +92,13 @@ ul {
   color: var(--primary-color);
 }
 
-.button-login button {
+.buttons-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button-login {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -104,9 +110,32 @@ ul {
   transition: color 0.3s;
 }
 
-.button-login button:hover {
+.button-login:hover {
   background: var(--cinza-1);
   color: var(--primary-color);
+}
+
+/* .button-login p:hover {
+  color: var(--primary-color);
+} */
+
+.button-cadastrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  padding: 16px;
+  /* background: var(--primary-color); */
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.button-cadastrar:hover {
+  background: var(--primary-color);
+  color: var(--cinza-1);
+  outline: 1px solid var(--cinza-1);
 }
 /*---------------*/
 
