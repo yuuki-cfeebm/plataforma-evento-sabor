@@ -1,0 +1,122 @@
+.body-login {
+  font-family: 'Poppins', sans-serif;
+  background: #111; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  padding: 16px;
+}
+
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-card {
+ background: #1B1B1B; 
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+
+.logo-login {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.titulo-login{
+    font-size: 32px;
+    font-weight: 700;
+    color: #ED9224; 
+    margin-bottom: 8px;
+}
+.texto-pequeno {
+    font-size: 14px;
+    color: #DCDCDC; 
+    margin-bottom: 32px;
+}
+
+form.login{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    }
+
+.input-group label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #DCDCDC;
+    margin-bottom: 6px;
+}
+.input-group input {
+     padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #333;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input-group input::placeholder {
+  color: #919191;
+}
+
+.input-group input:focus {
+  border: 2px solid #AF3E3E; 
+  box-shadow: 0 0 8px rgba(175, 62, 62, 0.6);
+}
+
+.button-login {
+  
+  background: linear-gradient(90deg, #ED9224, #AF3E3E); 
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.button-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(237, 146, 36, 0.6);
+}
+
+.texto-voltar {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #919191;
+}
+
+.texto-voltar a {
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.texto-voltar a:hover {
+  color: #AF3E3E; 
+  text-decoration: underline;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Evento & Sabor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
+    <head>
+    </head>
+    
+<body class="body-login">
+    <div class="login-container font-poppins">
+     <div class="login-card">
+        
+            <img src="assets/img/icon-logo.svg" alt="Logo Buffet Simone" class="logo-login">
+        <h2 class="titulo-login">Entre na sua conta</h2>
+      <p class="texto-pequeno">Preencha os campos abaixo para entrar e fazer/acompanhar seu pedido.</p>
+
+      <form class="form-login" id="formLogin">
+        <div class="input-group">
+            <label for="Email">Email: </label>
+          <input type="text" id="Email" name="Email" placeholder="Digite seu email" required>
+<br>
+<br>
+          <div class="input-group">
+          <label for="senha">Senha: </label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+<br>
+<br>
+           <button type="submit" class="button-login">Entrar</button>
+
+          <p class="texto-voltar">Não tem uma conta? <a href="index.html" class="link-cadastro">Criar conta</a></p>
+        </div>
+
+        </div>
+    
+  </div>
+ <script>
+    // Validação simples de senha
+    document.getElementById('formLogin').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const emailCorreto = document.getElementById('teste@exemplo.com').value;
+      const senhaCorreta = document.getElementById('senha123').value;
+
+      const emailDigitado = document.getElementById('Email').value;
+      const senhaDigitada = document.getElementById('senha').value;
+      const errorMessageDiv = document.getElementById('error-message');
+
+      errorMessageDiv.textContent = '';
+  errorMessageDiv.style.display = 'none';
+
+      if (emailDigitado === emailCorreto && senhaDigitada === senhaCorreta) {
+    alert('Login realizado com sucesso!');
+    window.location.href = "index.html"; // Redireciona para outra página
+  } else {
+
+      errorMessageDiv.textContent = 'E-mail ou senha incorretos.';
+    errorMessageDiv.style.display = 'block';
+  }
+    });
+  </script>
+    </body>
+    </html>
