@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .body-login {
   font-family: 'Poppins', sans-serif;
   background: #111; 
@@ -6,7 +10,6 @@
   align-items: center;
   min-height: 100vh;
   color: #fff;
-  padding: 16px;
 }
 
 
