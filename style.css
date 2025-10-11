@@ -55,6 +55,7 @@ body {
   position: fixed;
   top: 0;
   transition: 0.3s ease;
+  z-index: 20;
 }
 
 #header.hide {
@@ -115,9 +116,6 @@ ul {
   color: var(--primary-color);
 }
 
-/* .button-login p:hover {
-  color: var(--primary-color);
-} */
 
 .button-cadastrar {
   display: flex;
@@ -125,8 +123,8 @@ ul {
   gap: 8px;
   font-size: 20px;
   padding: 16px;
-  /* background: var(--primary-color); */
   border: 2px solid var(--primary-color);
+  color: var(--cinza-1);
   border-radius: 8px;
   cursor: pointer;
   transition: color 0.3s;
@@ -170,7 +168,6 @@ main {
 .column-left {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   max-width: 60%;
   width: 100%;
   gap: 36px;
@@ -490,13 +487,38 @@ main {
 }
 
 /*----FOOTER----*/
+.botao-fixo {
+  position: absolute;
+  /* left: ; */
+  top: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+ 
+.botao-fixo button {
+  background-color: #f19d00;
+  color: white;
+  border-radius: 30px;
+  padding: 18px 72px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+ 
+.botao-fixo button:hover {
+  background-color: #d88900;
+}
+
 footer {
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   width: 100%;
   background: #111;
   color: #ddd;
+  position: relative;
 }
  
 .footer-container {
