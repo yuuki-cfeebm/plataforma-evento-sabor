@@ -513,10 +513,14 @@ main {
 }
  
 .botao-fixo button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background-color: #f19d00;
   color: white;
   border-radius: 30px;
   padding: 18px 72px;
+  font-size: 28px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
