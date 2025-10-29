@@ -10,14 +10,21 @@ const divSecaoProdutos = document.createElement('div')
 
 const btnPratos = document.querySelector('#btn-pratos')
 
+//array info produto card
+const produtos = [{
+  categoria: "",
+  setImgCard: "",
+  nomeProduto: "",
+  descricaoProduto: "",
+  preco: ""
+}]
+
 /*"estados"*/
+
 function setTituloNav(tituloNav) {
   divNavSpan.textContent = tituloNav
 }
 
-function setSection(categoria) {
-
-}
 /*---------*/
 
 ulNav.innerHTML = `
@@ -51,9 +58,9 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   const novoProduto = {
     categoria: categoria,
     setImgCard: setImgCard,
-    nomeProduto,,
-    descricaoProduto,
-    preco
+    nomeProduto: nomeProduto,
+    descricaoProduto: descricaoProduto,
+    preco: preco
   }
 
 
@@ -179,27 +186,45 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   console.log(produtos)
 }
 
-const produtoTeste = card(
-  'doce',
+//teste
+const produto1 = card('pratos',
   'img/torradav2.png',
   'Torrada Especial',
   'Deliciosa torrada com queijo',
   '12,00'
-);
+)
 
-const btnTeste = document.querySelector('#teste')
-btnTeste.addEventListener('click', () => {
-  card('saguado',
+const produto2 = card(
+  'doce',
   'img/torradav2.png',
-  'Torrada Especial',
+  'Doce bacana',
+  'Doce bem bacana',
+  "20,00"
+)
+
+const produto3 = card('pratos',
+  'img/torradav2.png',
+  'Torrada torrada 2',
   'Deliciosa torrada com queijo',
-  '12,00')
-})
+  '12,00'
+)
 
 btnPratos.addEventListener('click', () => {
   setTituloNav("Pratos Principais")
 
+  divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
+
+  const pratosP = produtos.filter(elemento => elemento.categoria == 'pratos')
+
+  pratosP.map(elemento => card(
+    elemento.categoria, 
+    elemento.setImgCard, 
+    elemento.nomeProduto, 
+    elemento.descricaoProduto, 
+    elemento.preco 
+  ))
 })
+
 
 
 //criar um array que pega as informações do card do produto. Quando clicar em alguma categoria, salgado, por exemolo, fazer um addEventListener que ao clicar pega o array com as informações dos produtos cadastrados, e verificar com o map, se a categoria == salgado, se for igual, chama a função card() e passa as informações do array como argumento para a função card()
