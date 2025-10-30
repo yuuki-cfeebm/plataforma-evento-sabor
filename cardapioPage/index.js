@@ -8,19 +8,50 @@ const ulNav = document.createElement('ul')
 
 const divSecaoProdutos = document.createElement('div')
 
-const btnPratos = document.querySelector('#btn-pratos')
+//categorias buttons
+const categoriaPratos = document.querySelector('#btn-pratos')
+const categoriaSalgados = document.querySelector('#btn-salgados')
+const categoriaDoces = document.querySelector('#btn-doces')
+const categoriaTodos = document.querySelector('#btn-todos')
 
 //array info produto card
-const produtos = [{
-  categoria: "",
-  setImgCard: "",
-  nomeProduto: "",
-  descricaoProduto: "",
-  preco: ""
-}]
+// const produtos = [{
+//   categoria: "",
+//   setImgCard: "",
+//   nomeProduto: "",
+//   descricaoProduto: "",
+//   preco: ""
+// }]
+const produtos = [
+  
+    {
+      categoria: 'pratos',
+      tituloSection: 'Pratos Principais',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'pratao',
+      descricaoProduto: 'Deliciosa torrada com queijo',
+      preco: '12,00'
+    },
+    {
+      categoria: 'doces',
+      tituloSection: 'Doces e Sobremesas',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'Doce bacana',
+      descricaoProduto: 'Doce bem bacana',
+      preco: "20,00"
+    },
+    {
+      categoria: 'salgados',
+      tituloSection: 'Salgados e Petiscos',
+       setImgCard: 'img/torradav2.png',
+      nomeProduto: 'salgado bacana 2',
+      descricaoProduto: 'Deliciosa torrada com queijo',
+      preco: '12,00'
+    }
+  
+]
 
 /*"estados"*/
-
 function setTituloNav(tituloNav) {
   divNavSpan.textContent = tituloNav
 }
@@ -54,15 +85,6 @@ main.appendChild(divSecaoProdutos)
 
 //'componente' Card
 function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
-  
-  const novoProduto = {
-    categoria: categoria,
-    setImgCard: setImgCard,
-    nomeProduto: nomeProduto,
-    descricaoProduto: descricaoProduto,
-    preco: preco
-  }
-
 
   //preciso de borderColor, imgCard, nomeProduto, descricaoProduto, preco, addIcon, bgAddBtn
   const containerCard = document.createElement('div')
@@ -76,7 +98,6 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   const bgBranco = document.createElement('div')
   const containerCarrinho = document.createElement('div')
 
-  // const cont=0
   let cont = 0
   let controlarItemAdd = false
 
@@ -95,8 +116,15 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   iconCarrinho.classList.add('centralizar-btn')
 
   /*container-card -> card-preco*/
-  // categoria == 'salgado' ? asdfasdf : asdfasdf
-  containerCard.style.border = "3px solid #ED9224"
+  //modificar as coresssssssss
+  if(categoria == 'pratos') {
+    containerCard.style.border = '3px solid #ED9224'
+  } else if(categoria == 'salgados') {
+    containerCard.style.border = '3px solid #EEF600'
+  } else if(categoria == 'doces') {
+    containerCard.style.border = '3px solid #FF9ADA'
+  }
+
   const imgCard = document.createElement('img')
   imgCard.src = `${setImgCard}`
   containerImg.appendChild(imgCard)
@@ -179,53 +207,46 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
       btnAddCarrinhoIcon.src = "icon/icon-carrinho.svg"
 
     }
-    // controlarItemAdd == true ? containerCarrinho.style.background = '#4FAD00' : containerCarrinho.style.background = '#ED9224'
   })
-
-  produtos.push(novoProduto)
-  console.log(produtos)
+  return containerCard
 }
 
-//teste
-const produto1 = card('pratos',
-  'img/torradav2.png',
-  'Torrada Especial',
-  'Deliciosa torrada com queijo',
-  '12,00'
-)
-
-const produto2 = card(
-  'doce',
-  'img/torradav2.png',
-  'Doce bacana',
-  'Doce bem bacana',
-  "20,00"
-)
-
-const produto3 = card('pratos',
-  'img/torradav2.png',
-  'Torrada torrada 2',
-  'Deliciosa torrada com queijo',
-  '12,00'
-)
-
-btnPratos.addEventListener('click', () => {
-  setTituloNav("Pratos Principais")
+function renderizarCategorias(categoria) {
 
   divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
 
-  const pratosP = produtos.filter(elemento => elemento.categoria == 'pratos')
+
+
+  const pratosP = produtos.filter(elemento => elemento.categoria == categoria)
 
   pratosP.map(elemento => card(
     elemento.categoria, 
     elemento.setImgCard, 
     elemento.nomeProduto, 
     elemento.descricaoProduto, 
-    elemento.preco 
+    elemento.preco,
+    setTituloNav(elemento.tituloSection)
   ))
-})
+}
 
+function renderizarTodos() {
+  setTituloNav("Todos")
+  const liButtonTodos = document.querySelector('.li-button-todos')
+  liButtonTodos.style.background = "#FFC9B4"
+  divSecaoProdutos.innerHTML = " "
+  produtos.map(elemento => card(
+    elemento.categoria,
+    elemento.setImgCard,
+    elemento.nomeProduto,
+    elemento.descricaoProduto,
+    elemento.preco
+  ))
 
+}
 
+categoriaPratos.addEventListener('click', () => renderizarCategorias("pratos"))
+categoriaSalgados.addEventListener('click', () => renderizarCategorias("salgados"))
+categoriaDoces.addEventListener('click', () => renderizarCategorias("doces"))
+categoriaTodos.addEventListener('click', () => renderizarTodos())
 //criar um array que pega as informações do card do produto. Quando clicar em alguma categoria, salgado, por exemolo, fazer um addEventListener que ao clicar pega o array com as informações dos produtos cadastrados, e verificar com o map, se a categoria == salgado, se for igual, chama a função card() e passa as informações do array como argumento para a função card()
 
