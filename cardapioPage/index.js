@@ -223,29 +223,30 @@ function renderizarCategorias(categoria) {
   categoria == 'salgados' ? setTituloNav('Salgados e Petiscos') : ""
   categoria == 'doces' ? setTituloNav('Doces e Sobremesas') : ""
 
-  const pratosP = produtos.filter(elemento => elemento.categoria == categoria)
+  const categoriaSelecionada = produtos.filter(produto => produto.categoria == categoria)
 
-  pratosP.map(elemento => card(
-    elemento.categoria, 
-    elemento.setImgCard, 
-    elemento.nomeProduto, 
-    elemento.descricaoProduto, 
-    elemento.preco,
-    // setTituloNav(elemento.tituloSection)
+  categoriaSelecionada.map(produto => card(
+    produto.categoria, 
+    produto.setImgCard, 
+    produto.nomeProduto, 
+    produto.descricaoProduto, 
+    produto.preco,
   ))
 }
 
 function renderizarTodos() {
+  divSecaoProdutos.innerHTML = " "
   setTituloNav("Todos")
+  
   const liButtonTodos = document.querySelector('.li-button-todos')
   liButtonTodos.style.background = "#FFC9B4"
-  divSecaoProdutos.innerHTML = " "
-  produtos.map(elemento => card(
-    elemento.categoria,
-    elemento.setImgCard,
-    elemento.nomeProduto,
-    elemento.descricaoProduto,
-    elemento.preco
+
+  produtos.map(produto => card(
+    produto.categoria,
+    produto.setImgCard,
+    produto.nomeProduto,
+    produto.descricaoProduto,
+    produto.preco
   ))
 
 }
