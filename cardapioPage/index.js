@@ -26,7 +26,6 @@ const produtos = [
   
     {
       categoria: 'pratos',
-      tituloSection: 'Pratos Principais',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao',
       descricaoProduto: 'Deliciosa torrada com queijo',
@@ -34,7 +33,6 @@ const produtos = [
     },
     {
       categoria: 'doces',
-      tituloSection: 'Doces e Sobremesas',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Doce bacana',
       descricaoProduto: 'Doce bem bacana',
@@ -42,11 +40,17 @@ const produtos = [
     },
     {
       categoria: 'salgados',
-      tituloSection: 'Salgados e Petiscos',
-       setImgCard: 'img/torradav2.png',
+      setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado bacana 2',
       descricaoProduto: 'Deliciosa torrada com queijo',
       preco: '12,00'
+    },
+    {
+      categoria: 'doces',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'Dossao legaal',
+      descricaoProduto: 'Delicioso doce legal',
+      preco: '60,00'
     }
   
 ]
@@ -215,7 +219,9 @@ function renderizarCategorias(categoria) {
 
   divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
 
-
+  categoria == 'pratos' ? setTituloNav('Pratos Principais') : ""
+  categoria == 'salgados' ? setTituloNav('Salgados e Petiscos') : ""
+  categoria == 'doces' ? setTituloNav('Doces e Sobremesas') : ""
 
   const pratosP = produtos.filter(elemento => elemento.categoria == categoria)
 
@@ -225,7 +231,7 @@ function renderizarCategorias(categoria) {
     elemento.nomeProduto, 
     elemento.descricaoProduto, 
     elemento.preco,
-    setTituloNav(elemento.tituloSection)
+    // setTituloNav(elemento.tituloSection)
   ))
 }
 
