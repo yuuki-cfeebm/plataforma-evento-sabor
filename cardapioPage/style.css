@@ -3,7 +3,7 @@
 
 :root {
   --primary-color: #ED9224;
-  --background-sobre: #FDF7E5;
+  --background-cardapio: #FDF7E5;
   --terracota: #AF3E3E;
   --cinza-1: #DCDCDC;
   --cinza-2: #919191;
@@ -38,14 +38,23 @@ ul, li {
 
 .sidebar {
   max-width: 20%;
-  width: 300px;
+  width: 350px;
   min-width: 200px;
   height: 100vh;
   /* background: green; */
 }
 
 aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo img {
@@ -54,6 +63,10 @@ aside {
   object-fit: contain;
 }
 
+.menu-categorias {
+  display: flex;
+  flex-direction: column;
+}
 
 .layout-header-main {
   display: flex;
@@ -61,11 +74,12 @@ aside {
   max-width: 100%;
   width: 100%;
   height: 100vh;
+  background: var(--background-cardapio);
 }
 
 header {
   width: 100%;
-  background: pink;
+  /* background: pink; */
 }
 
 nav {
@@ -75,7 +89,7 @@ nav {
 main {
   flex: 1;
   height: 100%;
-  background: red;
+  /* background: red; */
   padding: 16px;
   overflow: auto;
   scrollbar-width: thin;
@@ -83,13 +97,11 @@ main {
 }
 
 .secao-produtos {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: space-between;
-  gap: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
   max-width: 100%;
   width: 100%;
-  /* background: purple; */
   flex-wrap: wrap;
 }
 
@@ -168,23 +180,26 @@ main {
 
 .centralizar-btn {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
 /*reutilizaveis*/
-.texto-medio {
-  font-size: 24px;
+.btn-categoria {
+  padding: 8px;
+  border-radius: 4px;
+  gap: 10px;
+  width: 100%;
 }
 
-.texto-cinza2 {
+.border-8 {
+  border-radius: 8px;
+}
+
+.texto-btn-categoria {
   color: var(--cinza-2);
-}
-
-.gap12 {
-  gap: 18px;
-  margin-left: 20px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /*colocar padding no buton das categorias*/
-

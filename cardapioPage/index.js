@@ -8,20 +8,18 @@ const ulNav = document.createElement('ul')
 
 const divSecaoProdutos = document.createElement('div')
 
+
+//li das categorias btns
+const liPratos = document.querySelector('#li-pratos')
+const liSalgados = document.querySelector('#li-salgados')
+const liDoces = document.querySelector('#li-doces')
+
 //categorias buttons
 const categoriaPratos = document.querySelector('#btn-pratos')
 const categoriaSalgados = document.querySelector('#btn-salgados')
 const categoriaDoces = document.querySelector('#btn-doces')
 const categoriaTodos = document.querySelector('#btn-todos')
 
-//array info produto card
-// const produtos = [{
-//   categoria: "",
-//   setImgCard: "",
-//   nomeProduto: "",
-//   descricaoProduto: "",
-//   preco: ""
-// }]
 const produtos = [
   
     {
@@ -51,16 +49,20 @@ const produtos = [
       nomeProduto: 'Dossao legaal',
       descricaoProduto: 'Delicioso doce legal',
       preco: '60,00'
+    },
+    {
+      categoria: 'salgados',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'salgado 5 item',
+      descricaoProduto: 'Delicioso doce legal',
+      preco: '60,00'
     }
   
 ]
 
-/*"estados"*/
 function setTituloNav(tituloNav) {
   divNavSpan.textContent = tituloNav
 }
-
-/*---------*/
 
 ulNav.innerHTML = `
   <li>
@@ -122,11 +124,11 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   /*container-card -> card-preco*/
   //modificar as coresssssssss
   if(categoria == 'pratos') {
-    containerCard.style.border = '3px solid #ED9224'
+    containerCard.style.border = '3px solid #FFC279'
   } else if(categoria == 'salgados') {
-    containerCard.style.border = '3px solid #EEF600'
+    containerCard.style.border = '3px solid #DDE05A'
   } else if(categoria == 'doces') {
-    containerCard.style.border = '3px solid #FF9ADA'
+    containerCard.style.border = '3px solid #FF7DCF'
   }
 
   const imgCard = document.createElement('img')
@@ -215,8 +217,79 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   return containerCard
 }
 
-function renderizarCategorias(categoria) {
+function setBgBtn(num) {
+  const categoriasProdutos = [
+    {
+      id: 1,
+      li: '#li-pratos',
+      img: '#img-btn-pratos',
+      span: '#span-btn-pratos',
+      iconDefault: 'icon/icon-pratos.svg',
+      iconClicked: 'icon/icon-pratos-clicked.svg',
+      bgDefault: 'none',
+      bg: '#FEEDD8',
+      color: '#FFC279'
+    },
+    {
+      id: 2,
+      li: '#li-salgados',
+      img: '#img-btn-salgados',
+      span: '#span-btn-salgados',
+      iconDefault: 'icon/icon-salgados.svg',
+      iconClicked: 'icon/icon-salgados-clicked.svg',
+      bgDefault: 'none',
+      bg: '#FDD6D6',
+      color: '#AF3E3E'
+    },
+    {
+      id: 3,
+      li: '#li-doces',
+      img: '#img-btn-doces',
+      span: '#span-btn-doces',
+      iconDefault: 'icon/icon-doces.svg',
+      iconClicked: 'icon/icon-doces-clicked.svg',
+      bgDefault: 'none',
+      bg: '#FFE1F4',
+      color: '#FF7DCF'
+    },
+    {
+      id: 4,
+      li: '.li-button-todos',
+      img: '#img-btn-todos',
+      span: '#span-btn-todos',
+      iconDefault: 'icon/icon-todos.svg',
+      iconClicked: 'icon/icon-todos-clicked.svg',
+      bgDefault: 'none',
+      bg: '#EBEBEB',
+      color: '#919191'
+    }
+  ]
 
+  categoriasProdutos.forEach(categoria => {
+    const li = document.querySelector(categoria.li)
+    const img = document.querySelector(categoria.img)
+    const span = document.querySelector(categoria.span)
+
+    li.style.background = categoria.bgDefault
+    li.style.transition = '0.2s ease-in-out'
+    img.src = categoria.iconDefault
+    span.style.color = '#919191'
+    
+  })
+
+  const ativo = categoriasProdutos.find(categoria => categoria.id == num) //encontra a categoria que veio do parametro num
+  if(ativo) {
+    const li = document.querySelector(ativo.li)
+    const img = document.querySelector(ativo.img)
+    const span = document.querySelector(ativo.span)
+
+    li.style.background = ativo.bg
+    img.src = ativo.iconClicked
+    span.style.color = ativo.color
+  }
+}
+
+function renderizarCategorias(categoria) {
   divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
 
   categoria == 'pratos' ? setTituloNav('Pratos Principais') : ""
@@ -235,12 +308,9 @@ function renderizarCategorias(categoria) {
 }
 
 function renderizarTodos() {
-  divSecaoProdutos.innerHTML = " "
+  divSecaoProdutos.innerHTML = ""
   setTituloNav("Todos")
   
-  const liButtonTodos = document.querySelector('.li-button-todos')
-  liButtonTodos.style.background = "#FFC9B4"
-
   produtos.map(produto => card(
     produto.categoria,
     produto.setImgCard,
@@ -248,12 +318,21 @@ function renderizarTodos() {
     produto.descricaoProduto,
     produto.preco
   ))
-
 }
 
-categoriaPratos.addEventListener('click', () => renderizarCategorias("pratos"))
-categoriaSalgados.addEventListener('click', () => renderizarCategorias("salgados"))
-categoriaDoces.addEventListener('click', () => renderizarCategorias("doces"))
-categoriaTodos.addEventListener('click', () => renderizarTodos())
-//criar um array que pega as informações do card do produto. Quando clicar em alguma categoria, salgado, por exemolo, fazer um addEventListener que ao clicar pega o array com as informações dos produtos cadastrados, e verificar com o map, se a categoria == salgado, se for igual, chama a função card() e passa as informações do array como argumento para a função card()
-
+categoriaPratos.addEventListener('click', () => {
+  renderizarCategorias("pratos")
+  setBgBtn(1)
+})
+categoriaSalgados.addEventListener('click', () => {
+  renderizarCategorias("salgados")
+  setBgBtn(2)
+})
+categoriaDoces.addEventListener('click', () => {
+  renderizarCategorias("doces")
+  setBgBtn(3)
+})
+categoriaTodos.addEventListener('click', () => {
+  renderizarTodos()
+  setBgBtn(4)
+})
