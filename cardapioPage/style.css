@@ -37,9 +37,10 @@ ul, li {
 }
 
 .sidebar {
-  max-width: 20%;
-  width: 350px;
-  min-width: 200px;
+  /* max-width: 20%; */
+  /* min-width: 200px; */
+  min-width: 300px;
+  box-shadow: 10px 0px 10px 1px var(--cinza-3);
   height: 100vh;
   /* background: green; */
 }
@@ -63,9 +64,16 @@ aside {
   object-fit: contain;
 }
 
+.items-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .menu-categorias {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .layout-header-main {
@@ -77,19 +85,52 @@ aside {
   background: var(--background-cardapio);
 }
 
+.restricoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.restricoes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.filtro {
+  width: 18px;
+  height: 18px;
+}
+
+.restricoes li label {
+  font-size: 14px;
+  color: var(--cinza-3);
+}
+
+/*-----*/
+
 header {
   width: 100%;
-  /* background: pink; */
+  background: white;
 }
 
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px;
+}
+
+.titulo-header {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 main {
   flex: 1;
   height: 100%;
-  /* background: red; */
   padding: 16px;
   overflow: auto;
   scrollbar-width: thin;
@@ -178,13 +219,13 @@ main {
   background: #ED9224;
 }
 
+/*reutilizaveis*/
 .centralizar-btn {
   display: flex;
   /* justify-content: center; */
   align-items: center;
 }
 
-/*reutilizaveis*/
 .btn-categoria {
   padding: 8px;
   border-radius: 4px;
@@ -200,6 +241,18 @@ main {
   color: var(--cinza-2);
   font-size: 16px;
   font-weight: bold;
+}
+
+.linha {
+  width: 100%;
+  height: 1px;
+  background: var(--cinza-2);
+  margin-bottom: 8px;
+  /* margin-top: 16px; */
+}
+
+.span-cinza {
+  color: var(--cinza-2);
 }
 
 /*colocar padding no buton das categorias*/

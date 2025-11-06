@@ -83,6 +83,7 @@ ulNav.innerHTML = `
 header.appendChild(componenteNav) //nav dentro do header
 componenteNav.appendChild(divNav) //div do titulo dentro da nav
 divNavSpan.textContent = "Todos"
+divNavSpan.classList.add('titulo-header')
 divNav.appendChild(divNavSpan) //span dentro da div da nav
 componenteNav.appendChild(ulNav) //ul dentro de nav
 

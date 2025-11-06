@@ -13,18 +13,18 @@
         <div class="logo">
           <img src="img/logo-evento-sabor.png" alt="img-logo">
         </div>
-        <div class="items-menu">
-          <ul>
+        <div>
+          <ul class="items-menu">
             <li class="li-button-todos border-8">
               <button id="btn-todos" class="btn-sidebar centralizar-btn btn-categoria">
                 <img id="img-btn-todos" src="icon/icon-todos.svg" alt="icon-todos"> 
                 <span id="span-btn-todos" class="texto-btn-categoria">Todos</span>
               </button>
             </li>
-            <div class="linha-categoria"></div>
+            <div class="linha"></div>
           </ul>
           <ul class="menu-categorias">
-            <span>Categorias</span>
+            <div><span class="span-cinza">Categorias</span></div>
             <li id="li-pratos" class="border-8">
               <button id="btn-pratos" class="btn-sidebar centralizar-btn btn-categoria">
                 <img id="img-btn-pratos" src="icon/icon-pratos.svg" alt="icon-pratos">
@@ -45,25 +45,21 @@
             </li>
             <li><div class="linha"></div></li>
           </ul>
-          <ul>
-            <span>Restrições</span>
+          <ul class="restricoes">
+            <span class="span-cinza">Restrições</span>
             <li>
-              <button type="checkbox">
-                aaaaaa
-              </button>
+              <input class="filtro" type="checkbox" value="sem-glutem">
+              <label for="">Sem Glútem</label>
             </li>
             <li>
-              <button type="checkbox">
-                aaaaaa
-              </button>
+              <input class="filtro" type="checkbox">
+              <label for="">Sem Glútem</label>
             </li>
             <li>
-              <button type="checkbox">
-                aaaaaa
-              </button>
+              <input class="filtro" type="checkbox">
+              <label for="">Sem Glútem</label>
             </li>
           </ul>
-          <button id="teste">teste</button>
         </div>
       </aside>
     </div>
