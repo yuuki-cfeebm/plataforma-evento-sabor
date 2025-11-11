@@ -3,11 +3,10 @@ const main = document.querySelector('main')
 
 const componenteNav = document.createElement('nav')
 const divNav = document.createElement('div')
+componenteNav.classList.add('nav-header')
 const divNavSpan = document.createElement('span')
 const ulNav = document.createElement('ul')
-
 const divSecaoProdutos = document.createElement('div')
-
 
 //li das categorias btns
 const liPratos = document.querySelector('#li-pratos')
@@ -21,43 +20,54 @@ const categoriaDoces = document.querySelector('#btn-doces')
 const categoriaTodos = document.querySelector('#btn-todos')
 
 const produtos = [
-  
+    {
+      categoria: 'pratos',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'pratao 2',
+      descricaoProduto: 'Deliciosa prato com queijo sem glutem',
+      preco: '25,00',
+      restricao: 'glutem'
+    },
     {
       categoria: 'pratos',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao',
-      descricaoProduto: 'Deliciosa torrada com queijo',
-      preco: '12,00'
+      descricaoProduto: 'Deliciosa torrada com queijo sem glutem',
+      preco: '12,00',
+      restricao: 'glutem'
     },
     {
       categoria: 'doces',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Doce bacana',
-      descricaoProduto: 'Doce bem bacana',
-      preco: "20,00"
+      descricaoProduto: 'Doce bem bacana bem vegano aaaaa',
+      preco: '20,00',
+      restricao: 'vegano'
     },
     {
       categoria: 'salgados',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado bacana 2',
-      descricaoProduto: 'Deliciosa torrada com queijo',
-      preco: '12,00'
+      descricaoProduto: 'Deliciosa torrada com queijo bem vegano',
+      preco: '12,00',
+      restricao: 'vegano'
     },
     {
       categoria: 'doces',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Dossao legaal',
-      descricaoProduto: 'Delicioso doce legal',
-      preco: '60,00'
+      descricaoProduto: 'Delicioso doce legal bem vegano aaaaa',
+      preco: '60.50',
+      restricao: 'vegano'
     },
     {
       categoria: 'salgados',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado 5 item',
-      descricaoProduto: 'Delicioso doce legal',
-      preco: '60,00'
+      descricaoProduto: 'Delicioso doce legal sem glute aaaam',
+      preco: '60,00',
+      restricao: 'glutem'
     }
-  
 ]
 
 function setTituloNav(tituloNav) {
@@ -65,17 +75,17 @@ function setTituloNav(tituloNav) {
 }
 
 ulNav.innerHTML = `
-  <li>
-    <button>
-      <img src="" alt="icon-carrinho">
+  <li class="carrinho-header">
+    <button class="centralizar-btn"> 
+      <img src="icon/icon-carrinho-header.svg" alt="icon-carrinho">
+      <div class="num-items">1</div>
     </button>
   </li>
-  <li>
+  <li class="perfil-header">
     <button>
-      <img src="" alt="icon-user">
+      <img src="img/img-carla-perfil.jpg" alt="icon-user">
       <div class="user-name">
-        <span>username</span>
-        <span>nome-real</span>
+        <span class="nome">Kharla karla da carla</span>
       </div>
     </button>
   </li>
@@ -104,7 +114,7 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   const bgCinza = document.createElement('div')
   const bgBranco = document.createElement('div')
   const containerCarrinho = document.createElement('div')
-
+  const contBodyFooter = document.createElement('div')
   let cont = 0
   let controlarItemAdd = false
 
@@ -123,7 +133,7 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   iconCarrinho.classList.add('centralizar-btn')
 
   /*container-card -> card-preco*/
-  //modificar as coresssssssss
+  //modificar as cores 
   if(categoria == 'pratos') {
     containerCard.style.border = '3px solid #FFC279'
   } else if(categoria == 'salgados') {
@@ -154,7 +164,7 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   cardInfo.appendChild(cardTexto)
   cardInfo.appendChild(cardPreco)
   cardBody.appendChild(cardInfo)
-  containerCard.appendChild(cardBody) //add no container-card
+  containerCard.appendChild(cardBody)
 
   /*card-footer*/ 
   const btnDiminuir = document.createElement('button')
@@ -189,6 +199,10 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   cardFooter.appendChild(containerCarrinho)
   containerCard.appendChild(cardFooter) //add no container-card
 
+  contBodyFooter.appendChild(cardBody)
+  contBodyFooter.appendChild(cardFooter)
+  containerCard.appendChild(contBodyFooter)
+
   divSecaoProdutos.appendChild(containerCard)
 
   //adicionar mais de 1 item
@@ -218,6 +232,7 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   return containerCard
 }
 
+//controlar cor dos botões de categoria
 function setBgBtn(num) {
   const categoriasProdutos = [
     {
@@ -290,29 +305,35 @@ function setBgBtn(num) {
   }
 }
 
-function renderizarCategorias(categoria) {
+//filtros
+let categoriaAtual = 'todos'
+
+function renderizarCards(categoria) {
   divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
 
   categoria == 'pratos' ? setTituloNav('Pratos Principais') : ""
   categoria == 'salgados' ? setTituloNav('Salgados e Petiscos') : ""
   categoria == 'doces' ? setTituloNav('Doces e Sobremesas') : ""
-
-  const categoriaSelecionada = produtos.filter(produto => produto.categoria == categoria)
-
-  categoriaSelecionada.map(produto => card(
-    produto.categoria, 
-    produto.setImgCard, 
-    produto.nomeProduto, 
-    produto.descricaoProduto, 
-    produto.preco,
-  ))
+  categoria == 'todos' ? setTituloNav('Todos os Produtos') : ""
+  categoriaAtual = categoria
+  atualizarProdutos()
 }
 
-function renderizarTodos() {
+function atualizarProdutos() {
   divSecaoProdutos.innerHTML = ""
-  setTituloNav("Todos")
-  
-  produtos.map(produto => card(
+  const filtrosMarcados = Array.from(document.querySelectorAll('.filtro:checked')).map(marcado => marcado.value)
+
+  let produtosFiltrados = [...produtos] //pega o array de produtos
+
+  if(categoriaAtual != 'todos'){ //filtra por categoria
+    produtosFiltrados = produtosFiltrados.filter(produto => produto.categoria == categoriaAtual)
+  }
+
+  if(filtrosMarcados.length > 0) {
+    produtosFiltrados = produtosFiltrados.filter(produto => filtrosMarcados.includes(produto.restricao))
+  }
+
+  produtosFiltrados.forEach(produto => card(
     produto.categoria,
     produto.setImgCard,
     produto.nomeProduto,
@@ -321,19 +342,30 @@ function renderizarTodos() {
   ))
 }
 
+function iniciarFiltrosGlobais() {
+  const ulFiltro = document.querySelector('.restricoes')
+
+  ulFiltro.addEventListener('change', () => {
+    atualizarProdutos()
+  })
+}
+
+iniciarFiltrosGlobais()
+renderizarCards('todos')
+
 categoriaPratos.addEventListener('click', () => {
-  renderizarCategorias("pratos")
+  renderizarCards('pratos')
   setBgBtn(1)
 })
 categoriaSalgados.addEventListener('click', () => {
-  renderizarCategorias("salgados")
+  renderizarCards('salgados')
   setBgBtn(2)
 })
 categoriaDoces.addEventListener('click', () => {
-  renderizarCategorias("doces")
+  renderizarCards('doces')
   setBgBtn(3)
 })
 categoriaTodos.addEventListener('click', () => {
-  renderizarTodos()
+  renderizarCards('todos')
   setBgBtn(4)
 })
