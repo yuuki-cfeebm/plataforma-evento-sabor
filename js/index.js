@@ -32,12 +32,22 @@ document.querySelectorAll('.container-carousel').forEach(carrossel => {
 /*----FOOOTTTERRR-----*/
 
 // Ação do botão "Fazer pedido"
-document.getElementById('fazerPedido').addEventListener('click', () => {
-  alert('Seu pedido foi iniciado!');
+function fazerPedido() {
+  alert('Seu pedido foi iniciado!')
+}
+
+document.querySelector('#btn-fazer-pedido-1').addEventListener('click', () => {
+  fazerPedido();
+});
+
+document.querySelector('#btn-fazer-pedido-2').addEventListener('click', () => {
+  fazerPedido();
 });
  
 // ======== BOTÃO VOLTAR AO TOPO ========
-document.getElementById("topBtn").addEventListener("click", () => {
+const btnVoltarTopo = document.querySelector('#topBtn')
+
+btnVoltarTopo.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
   console.log("topo")
 });
