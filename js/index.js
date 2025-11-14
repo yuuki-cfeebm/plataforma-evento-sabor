@@ -29,30 +29,41 @@ document.querySelectorAll('.container-carousel').forEach(carrossel => {
   });
 });
 
-/*----FOOOTTTERRR-----*/
 
 // Ação do botão "Fazer pedido"
+let controlarCardapio = false
+
 function fazerPedido() {
-  alert('Seu pedido foi iniciado!')
+  const modalCardapio = document.querySelector('#modal-cardapio')
+
+  modalCardapio.classList.remove('esconder-cardapio')
+  console.log("apertou botao")
+  console.log(controlarCardapio)
+  // alert('Seu pedido foi iniciado!')
 }
 
-document.querySelector('#btn-fazer-pedido-1').addEventListener('click', () => {
+document.querySelector('#fechar-cardapio').addEventListener('click', () => {
+  const modalCardapio = document.querySelector('#modal-cardapio')
+  modalCardapio.classList.add('esconder-cardapio')
+  console.log('apertou x')
+})
+
+//btn da home
+const btnPedidoHome = document.querySelector('#btn-fazer-pedido-1')
+btnPedidoHome.addEventListener('click', () => {
   fazerPedido();
 });
 
-document.querySelector('#btn-fazer-pedido-2').addEventListener('click', () => {
+//btn do footer
+const btnPedidoFooter = document.querySelector('#btn-fazer-pedido-2')
+btnPedidoFooter.addEventListener('click', () => {
   fazerPedido();
 });
- 
+
 // ======== BOTÃO VOLTAR AO TOPO ========
 const btnVoltarTopo = document.querySelector('#topBtn')
 
 btnVoltarTopo.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
   console.log("topo")
-});
-
-// Ação do botão "Fazer pedido"
-document.getElementById('fazerPedido').addEventListener('click', () => {
-  alert('Seu pedido foi iniciado!');
 });
