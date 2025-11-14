@@ -47,21 +47,6 @@
     </div>
   </div>
 
-  <script>
-    // Validação simples de senha
-    document.getElementById('formCadastro').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const senha = document.getElementById('senha').value;
-      const confirmar = document.getElementById('confirmar-senha').value;
-
-      if (senha !== confirmar) {
-        alert('As senhas não coincidem!');
-        return;
-      }
-
-      alert('Cadastro realizado com sucesso!');
-      window.location.href = "index.html";
-    });
-  </script>
+  <script src="js/index.js"></script>
 </body>
 </html>
