@@ -108,13 +108,14 @@
 
 .texto-voltar {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 16px;
   color: #919191;
 }
 
 .texto-voltar a {
   font-weight: 600;
   text-decoration: none;
+  color: #ED9224;
   transition: color 0.3s;
 }
 
