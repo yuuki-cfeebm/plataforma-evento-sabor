@@ -4,7 +4,7 @@ const tel = document.querySelector('#telefone')
 const senha = document.querySelector('#senha')
 const confirmar = document.querySelector('#confirmar-senha')
 
-let usuarios = JSON.parse(localStorage.getItem('usuarios') || [])
+let usuarios = JSON.parse(localStorage.getItem('usuarios') || "[]")
 
 document.getElementById('formCadastro').addEventListener('submit', (event) => {
   event.preventDefault();
