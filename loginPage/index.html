@@ -30,29 +30,6 @@
       </div>  
     </div>
   </div>
- <script>
-    // Validação simples de senha
-    document.getElementById('formLogin').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const emailCorreto = document.getElementById('teste@exemplo.com').value;
-      const senhaCorreta = document.getElementById('senha123').value;
-
-      const emailDigitado = document.getElementById('Email').value;
-      const senhaDigitada = document.getElementById('senha').value;
-      const errorMessageDiv = document.getElementById('error-message');
-
-      errorMessageDiv.textContent = '';
-  errorMessageDiv.style.display = 'none';
-
-      if (emailDigitado === emailCorreto && senhaDigitada === senhaCorreta) {
-    alert('Login realizado com sucesso!');
-    window.location.href = "index.html"; // Redireciona para outra página
-  } else {
-
-      errorMessageDiv.textContent = 'E-mail ou senha incorretos.';
-    errorMessageDiv.style.display = 'block';
-  }
-    });
-  </script>
+  <script src="js/index.js"></script>
 </body> 
 </html>
