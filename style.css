@@ -136,7 +136,8 @@ ul {
 }
 
 .button-login:hover {
-  background: var(--cinza-1);
+  background: none;
+  border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
 
@@ -239,7 +240,8 @@ main {
 }
 
 .button-pedido button:hover {
-  background: var(--cinza-1);
+  background: none;
+  border: 1px solid var(--primary-color);
   color: var(--primary-color);
   transition: 0.3s;
 }
@@ -522,7 +524,7 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #f19d00;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 30px;
   padding: 18px 72px;
