@@ -74,6 +74,9 @@ function setTituloNav(tituloNav) {
   divNavSpan.textContent = tituloNav
 }
 
+//conta do usuário no cardápio
+let usuariosLogados = JSON.parse(localStorage.getItem('usuariosLogados'))
+
 ulNav.innerHTML = `
   <li class="carrinho-header">
     <button class="centralizar-btn"> 
@@ -85,7 +88,7 @@ ulNav.innerHTML = `
     <button>
       <img src="img/img-carla-perfil.jpg" alt="icon-user">
       <div class="user-name">
-        <span class="nome">Kharla karla da carla</span>
+        <span class="nome">${usuariosLogados.nome}</span>
       </div>
     </button>
   </li>
@@ -369,3 +372,4 @@ categoriaTodos.addEventListener('click', () => {
   renderizarCards('todos')
   setBgBtn(4)
 })
+
