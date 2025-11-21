@@ -1,6 +1,6 @@
 
-let usuarios = JSON.parse(localStorage.getItem('usuarios'))
-let usuariosLogados = []
+let usuarios = JSON.parse(localStorage.getItem('usuariosCadastrados'))
+let usuarioLogado = []
 // Validação simples de senha
 document.getElementById('formLogin').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -15,8 +15,8 @@ document.getElementById('formLogin').addEventListener('submit', function(e) {
   if (emailDigitado === encontrarUsuario.email &&   senhaDigitada === encontrarUsuario.senha) {
     alert('Login realizado com sucesso!');
     window.location.href = "../index.html"; // Redireciona para a página principal
-    usuariosLogados.push(encontrarUsuario)
-    localStorage.setItem('usuariosLogados', JSON.stringify(encontrarUsuario))
+    usuarioLogado.push(encontrarUsuario)
+    localStorage.setItem('usuarioLogado', JSON.stringify(encontrarUsuario))
   } else {
     alert('Usuário ou senha incorretos')
   }

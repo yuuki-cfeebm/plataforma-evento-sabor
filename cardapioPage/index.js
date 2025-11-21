@@ -75,7 +75,7 @@ function setTituloNav(tituloNav) {
 }
 
 //conta do usuário no cardápio
-let usuariosLogados = JSON.parse(localStorage.getItem('usuariosLogados'))
+let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
 
 ulNav.innerHTML = `
   <li class="carrinho-header">
@@ -88,7 +88,7 @@ ulNav.innerHTML = `
     <button>
       <img src="img/img-carla-perfil.jpg" alt="icon-user">
       <div class="user-name">
-        <span class="nome">${usuariosLogados.nome}</span>
+        <span class="nome">${usuarioLogado.nome}</span>
       </div>
     </button>
   </li>

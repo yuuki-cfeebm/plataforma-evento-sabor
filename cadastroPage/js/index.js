@@ -4,7 +4,7 @@ const tel = document.querySelector('#telefone')
 const senha = document.querySelector('#senha')
 const confirmar = document.querySelector('#confirmar-senha')
 
-let usuarios = JSON.parse(localStorage.getItem('usuarios') || "[]")
+let usuariosCadastrados = JSON.parse(localStorage.getItem('usuariosCadastrados') || "[]")
 
 document.getElementById('formCadastro').addEventListener('submit', (event) => {
   event.preventDefault();
@@ -22,8 +22,8 @@ document.getElementById('formCadastro').addEventListener('submit', (event) => {
     senha: senha.value
   }
 
-  usuarios.push(novoUsuario)
-  localStorage.setItem('usuarios', JSON.stringify(usuarios))
+  usuariosCadastrados.push(novoUsuario)
+  localStorage.setItem('usuariosCadastrados', JSON.stringify(usuariosCadastrados))
 
   alert('Cadastro realizado com sucesso')
   window.location.href = '../loginPage/index.html'
