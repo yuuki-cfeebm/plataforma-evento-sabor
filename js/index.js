@@ -45,20 +45,15 @@ function fazerPedido() {
 document.querySelector('#fechar-cardapio').addEventListener('click', () => {
   const modalCardapio = document.querySelector('#modal-cardapio')
   modalCardapio.classList.add('esconder-cardapio')
-  console.log('apertou x')
 })
 
-//btn da home
-const btnPedidoHome = document.querySelector('#btn-fazer-pedido-1')
-btnPedidoHome.addEventListener('click', () => {
-  fazerPedido();
-});
-
-//btn do footer
-const btnPedidoFooter = document.querySelector('#btn-fazer-pedido-2')
-btnPedidoFooter.addEventListener('click', () => {
-  fazerPedido();
-});
+//pega os btn pedido e adiciona event
+const buttonsPedido = document.querySelectorAll('.btn-pedido')
+buttonsPedido.forEach(button => {
+  button.addEventListener('click', () => {
+    fazerPedido()
+  })
+})
 
 // ======== BOTÃO VOLTAR AO TOPO ========
 const btnVoltarTopo = document.querySelector('#topBtn')
@@ -67,3 +62,6 @@ btnVoltarTopo.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
   console.log("topo")
 });
+
+const buttonsNav = document.querySelector('.buttons-nav')
+const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
