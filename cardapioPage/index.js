@@ -87,7 +87,7 @@ let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
 
 ulNav.innerHTML = `
   <li class="carrinho-header">
-    <button class="centralizar-btn"> 
+    <button id="btn-carrinho-compra" class="centralizar-btn"> 
       <img src="icon/icon-carrinho-header.svg" alt="icon-carrinho">
       <div id="num-carrinho" class="sem-items"></div>
     </button>
@@ -263,8 +263,44 @@ function controlarEstadoCarrinho() {
 }
 
 function cardCarrinho() {
-  
+  document.querySelector('body-carrinho').innerHTML`
+  <div class="card-carrinho">
+            <img id="img-card-carrinho" src="img/torradav2.png" alt="img-produto">
+            <div class="info-card-carrinho">
+              <span class="titulo">titulotitulotitulo</span>
+              <span class="descricao">descdescdesc</span>
+              <div class="preco">
+                <span>R$ 1000</span>
+              </div>
+            </div>
+            <div class="quantidade">
+              <button>
+                dimi
+              </button>
+              <div><span>0</span></div>
+              <button>
+                aume
+              </button>
+            </div>
+          </div>
+          `
 }
+
+const modalCarrinho = document.querySelector('.modal-carrinho')
+const fundoEscuro = document.querySelector('#fundo-escuro')
+
+document.querySelector('#btn-carrinho-compra').addEventListener('click', () => {
+  fundoEscuro.classList.add('escurecer-fundo')
+  modalCarrinho.classList.remove('fechar-modal-carrinho')
+  modalCarrinho.classList.add('mostrar-modal-carrinho')
+})
+
+document.querySelector('#btn-fechar-modal').addEventListener('click', () => {
+  fundoEscuro.classList.remove('escurecer-fundo')
+  modalCarrinho.classList.add('fechar-modal-carrinho')
+  modalCarrinho.classList.remove('mostrar-modal-carrinho')
+})
+
 
 //controlar cor dos botões de categoria
 function setBgBtn(num) {
