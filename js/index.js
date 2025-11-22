@@ -37,9 +37,7 @@ function fazerPedido() {
   const modalCardapio = document.querySelector('#modal-cardapio')
 
   modalCardapio.classList.remove('esconder-cardapio')
-  console.log("apertou botao")
   console.log(controlarCardapio)
-  // alert('Seu pedido foi iniciado!')
 }
 
 document.querySelector('#fechar-cardapio').addEventListener('click', () => {
