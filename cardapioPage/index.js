@@ -19,8 +19,11 @@ const categoriaSalgados = document.querySelector('#btn-salgados')
 const categoriaDoces = document.querySelector('#btn-doces')
 const categoriaTodos = document.querySelector('#btn-todos')
 
+let itensSelecionados = []
+
 const produtos = [
     {
+      id: 1,
       categoria: 'pratos',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao 2',
@@ -29,6 +32,7 @@ const produtos = [
       restricao: 'glutem'
     },
     {
+      id: 2,
       categoria: 'pratos',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao',
@@ -37,6 +41,7 @@ const produtos = [
       restricao: 'glutem'
     },
     {
+      id: 3,
       categoria: 'doces',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Doce bacana',
@@ -45,6 +50,7 @@ const produtos = [
       restricao: 'vegano'
     },
     {
+      id: 4,
       categoria: 'salgados',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado bacana 2',
@@ -53,6 +59,7 @@ const produtos = [
       restricao: 'vegano'
     },
     {
+      id: 5,
       categoria: 'doces',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Dossao legaal',
@@ -61,6 +68,7 @@ const produtos = [
       restricao: 'vegano'
     },
     {
+      id: 6,
       categoria: 'salgados',
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado 5 item',
@@ -81,15 +89,7 @@ ulNav.innerHTML = `
   <li class="carrinho-header">
     <button class="centralizar-btn"> 
       <img src="icon/icon-carrinho-header.svg" alt="icon-carrinho">
-      <div class="num-items">1</div>
-    </button>
-  </li>
-  <li class="perfil-header">
-    <button>
-      <img src="img/img-carla-perfil.jpg" alt="icon-user">
-      <div class="user-name">
-        <span class="nome">${usuarioLogado.nome}</span>
-      </div>
+      <div id="num-carrinho" class="sem-items"></div>
     </button>
   </li>
 `
@@ -104,9 +104,8 @@ divSecaoProdutos.classList.add('secao-produtos')
 main.appendChild(divSecaoProdutos)
 
 //'componente' Card
-function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
+function card(id, categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
 
-  //preciso de borderColor, imgCard, nomeProduto, descricaoProduto, preco, addIcon, bgAddBtn
   const containerCard = document.createElement('div')
   const containerImg = document.createElement('div')
   const cardBody = document.createElement('div')
@@ -119,7 +118,6 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   const containerCarrinho = document.createElement('div')
   const contBodyFooter = document.createElement('div')
   let cont = 0
-  let controlarItemAdd = false
 
   containerCard.classList.add('container-card')
   containerImg.classList.add('container-img')
@@ -135,7 +133,6 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   iconCarrinho.src = `icon/icon-carrinho.svg`
   iconCarrinho.classList.add('centralizar-btn')
 
-  /*container-card -> card-preco*/
   //modificar as cores 
   if(categoria == 'pratos') {
     containerCard.style.border = '3px solid #FFC279'
@@ -220,19 +217,53 @@ function card(categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
     divContador.textContent = cont-=1
   })
 
+  //verificar se um produto esta no carrinho
+  const itemAdicionado = itensSelecionados.includes(id)
+  if(itemAdicionado) {
+    btnAddCarrinho.style.background = "#4FAD00"
+    btnAddCarrinhoIcon.src = "icon/carrinho-check.svg"
+  } else {
+    btnAddCarrinho.style.background = "#ED9224"
+    btnAddCarrinhoIcon.src = "icon/icon-carrinho.svg"
+  }
+
   btnAddCarrinho.addEventListener('click', () => {
-    controlarItemAdd = !controlarItemAdd
-    console.log(controlarItemAdd)
-    if(controlarItemAdd == true) {
-      btnAddCarrinho.style.background = "#4FAD00"
-      btnAddCarrinhoIcon.src = "icon/carrinho-check.svg"
-    } else {
+    const index = itensSelecionados.indexOf(id)
+
+    if(index > -1) {
+      itensSelecionados.splice(index, 1)
       btnAddCarrinho.style.background = "#ED9224"
       btnAddCarrinhoIcon.src = "icon/icon-carrinho.svg"
-
+    } else {
+      itensSelecionados.push(id)
+      btnAddCarrinho.style.background = "#4FAD00"
+      btnAddCarrinhoIcon.src = "icon/carrinho-check.svg"
     }
+    
+    console.log(itensSelecionados)
+    controlarEstadoCarrinho()
   })
+  
   return containerCard
+}
+
+function controlarEstadoCarrinho() {
+  const numItemsDiv = document.querySelector('#num-carrinho')
+
+  if(itensSelecionados.length == 0) {
+    numItemsDiv.classList.add('sem-items')
+  } else {
+    numItemsDiv.classList.remove('sem-items')
+    numItemsDiv.classList.add('num-items')
+    numItemsDiv.textContent = itensSelecionados.length
+  }
+
+  const produtosCarrinho = produtos.filter(produto => itensSelecionados.includes(produto.id))
+  console.log(produtosCarrinho)
+}
+
+function cardCarrinho() {
+  
 }
 
 //controlar cor dos botões de categoria
@@ -337,6 +368,7 @@ function atualizarProdutos() {
   }
 
   produtosFiltrados.forEach(produto => card(
+    produto.id,
     produto.categoria,
     produto.setImgCard,
     produto.nomeProduto,
@@ -373,3 +405,4 @@ categoriaTodos.addEventListener('click', () => {
   setBgBtn(4)
 })
 
+//botão carrinho
