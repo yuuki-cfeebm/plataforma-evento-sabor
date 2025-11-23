@@ -15,7 +15,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e) {
   if (emailDigitado === encontrarUsuario.email &&   senhaDigitada === encontrarUsuario.senha) {
     alert('Login realizado com sucesso!');
     window.location.href = "../index.html"; // Redireciona para a página principal
-    usuarioLogado.push(encontrarUsuario)
+    usuarioLogado = encontrarUsuario
     localStorage.setItem('usuarioLogado', JSON.stringify(encontrarUsuario))
   } else {
     alert('Usuário ou senha incorretos')
