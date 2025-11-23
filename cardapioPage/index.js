@@ -217,7 +217,7 @@ function card(id, categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
     divContador.textContent = cont-=1
   })
 
-  //verificar se um produto esta no carrinho
+  // verificar se um produto esta no carrinho
   const itemAdicionado = itensSelecionados.includes(id)
   if(itemAdicionado) {
     btnAddCarrinho.style.background = "#4FAD00"
@@ -259,31 +259,38 @@ function controlarEstadoCarrinho() {
   }
 
   const produtosCarrinho = produtos.filter(produto => itensSelecionados.includes(produto.id))
-  console.log(produtosCarrinho)
+
+  const bodyCarrinho = document.querySelector('.body-carrinho')
+  bodyCarrinho.innerHTML = ""
+  
+  produtosCarrinho.forEach(produto => {
+    bodyCarrinho.innerHTML += cardCarrinho(produto)
+  })
 }
 
-function cardCarrinho() {
-  document.querySelector('body-carrinho').innerHTML`
-  <div class="card-carrinho">
-            <img id="img-card-carrinho" src="img/torradav2.png" alt="img-produto">
-            <div class="info-card-carrinho">
-              <span class="titulo">titulotitulotitulo</span>
-              <span class="descricao">descdescdesc</span>
-              <div class="preco">
-                <span>R$ 1000</span>
-              </div>
-            </div>
-            <div class="quantidade">
-              <button>
-                dimi
-              </button>
-              <div><span>0</span></div>
-              <button>
-                aume
-              </button>
-            </div>
-          </div>
-          `
+function cardCarrinho(produto) {
+
+  return `
+  <div id=card-carrinho-${produto.id} class="card-carrinho">
+    <img id="img-card-carrinho" src="${produto.setImgCard}" alt="img-produto">
+    <div class="info-card-carrinho">
+      <span class="titulo">${produto.nomeProduto}</span>
+      <span class="descricao">${produto.descricaoProduto}</span>
+      <div class="preco">
+        <span>${produto.preco}</span>
+      </div>
+    </div>
+    <div class="quantidade">
+      <button>
+        dimi
+      </button>
+      <div><span>0</span></div>
+      <button>
+        aume
+      </button>
+    </div>
+  </div>
+  `
 }
 
 const modalCarrinho = document.querySelector('.modal-carrinho')
@@ -301,6 +308,74 @@ document.querySelector('#btn-fechar-modal').addEventListener('click', () => {
   modalCarrinho.classList.remove('mostrar-modal-carrinho')
 })
 
+//filtros
+let categoriaAtual = 'todos'
+
+function renderizarCards(categoria) {
+  divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
+
+  categoria == 'pratos' ? setTituloNav('Pratos Principais') : ""
+  categoria == 'salgados' ? setTituloNav('Salgados e Petiscos') : ""
+  categoria == 'doces' ? setTituloNav('Doces e Sobremesas') : ""
+  categoria == 'todos' ? setTituloNav('Todos os Produtos') : ""
+  categoriaAtual = categoria
+  atualizarProdutos()
+}
+
+function atualizarProdutos() {
+  divSecaoProdutos.innerHTML = ""
+
+  let produtosFiltrados = [...produtos] //pega o array de produtos
+  
+  if(categoriaAtual != 'todos'){ //filtra por categoria
+    produtosFiltrados = produtosFiltrados.filter(produto => produto.categoria == categoriaAtual)
+  }
+
+  const filtrosMarcados = Array.from(document.querySelectorAll('.filtro:checked')).map(marcado => marcado.value)
+  
+  if(filtrosMarcados.length > 0) {
+    produtosFiltrados = produtosFiltrados.filter(produto => filtrosMarcados.includes(produto.restricao))
+  }
+
+  produtosFiltrados.forEach(produto => card(
+    produto.id,
+    produto.categoria,
+    produto.setImgCard,
+    produto.nomeProduto,
+    produto.descricaoProduto,
+    produto.preco
+  ))
+}
+
+function iniciarFiltrosGlobais() {
+  const ulFiltro = document.querySelector('.restricoes')
+
+  ulFiltro.addEventListener('change', () => {
+    atualizarProdutos()
+  })
+}
+
+iniciarFiltrosGlobais()
+renderizarCards('todos')
+
+categoriaPratos.addEventListener('click', () => {
+  renderizarCards('pratos')
+  setBgBtn(1)
+})
+categoriaSalgados.addEventListener('click', () => {
+  renderizarCards('salgados')
+  setBgBtn(2)
+})
+categoriaDoces.addEventListener('click', () => {
+  renderizarCards('doces')
+  setBgBtn(3)
+})
+categoriaTodos.addEventListener('click', () => {
+  renderizarCards('todos')
+  setBgBtn(4)
+})
+
+//botão carrinho
 
 //controlar cor dos botões de categoria
 function setBgBtn(num) {
@@ -374,71 +449,3 @@ function setBgBtn(num) {
     span.style.color = ativo.color
   }
 }
-
-//filtros
-let categoriaAtual = 'todos'
-
-function renderizarCards(categoria) {
-  divSecaoProdutos.innerHTML = "" //tava chamando os produtos de cima pq estao criados no escopo global
-
-  categoria == 'pratos' ? setTituloNav('Pratos Principais') : ""
-  categoria == 'salgados' ? setTituloNav('Salgados e Petiscos') : ""
-  categoria == 'doces' ? setTituloNav('Doces e Sobremesas') : ""
-  categoria == 'todos' ? setTituloNav('Todos os Produtos') : ""
-  categoriaAtual = categoria
-  atualizarProdutos()
-}
-
-function atualizarProdutos() {
-  divSecaoProdutos.innerHTML = ""
-  const filtrosMarcados = Array.from(document.querySelectorAll('.filtro:checked')).map(marcado => marcado.value)
-
-  let produtosFiltrados = [...produtos] //pega o array de produtos
-
-  if(categoriaAtual != 'todos'){ //filtra por categoria
-    produtosFiltrados = produtosFiltrados.filter(produto => produto.categoria == categoriaAtual)
-  }
-
-  if(filtrosMarcados.length > 0) {
-    produtosFiltrados = produtosFiltrados.filter(produto => filtrosMarcados.includes(produto.restricao))
-  }
-
-  produtosFiltrados.forEach(produto => card(
-    produto.id,
-    produto.categoria,
-    produto.setImgCard,
-    produto.nomeProduto,
-    produto.descricaoProduto,
-    produto.preco
-  ))
-}
-
-function iniciarFiltrosGlobais() {
-  const ulFiltro = document.querySelector('.restricoes')
-
-  ulFiltro.addEventListener('change', () => {
-    atualizarProdutos()
-  })
-}
-
-iniciarFiltrosGlobais()
-renderizarCards('todos')
-
-categoriaPratos.addEventListener('click', () => {
-  renderizarCards('pratos')
-  setBgBtn(1)
-})
-categoriaSalgados.addEventListener('click', () => {
-  renderizarCards('salgados')
-  setBgBtn(2)
-})
-categoriaDoces.addEventListener('click', () => {
-  renderizarCards('doces')
-  setBgBtn(3)
-})
-categoriaTodos.addEventListener('click', () => {
-  renderizarCards('todos')
-  setBgBtn(4)
-})
-
-//botão carrinho
