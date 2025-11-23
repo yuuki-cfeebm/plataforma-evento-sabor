@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin - Evento&Sabor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Evento&Sabor</h2>
+
+        <ul>
+            <li class="menu active" data-target="dashboard">Dashboard</li>
+            <li class="menu" data-target="produtos">Produtos</li>
+        </ul>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="section visible">
+            <h1>Dashboard</h1>
+            <div class="cards">
+                <div class="card"><h3>Produtos</h3><p id="total-produtos">0</p></div>
+            </div>
+        </div>
+
+        <!-- PRODUTOS -->
+        <div id="produtos" class="section">
+
+            <h1>Gerenciar Produtos</h1>
+
+            <div class="form">
+                <h3>Adicionar Produto</h3>
+
+                <input id="p_nome" placeholder="Nome do produto">
+                <input id="p_descricao" placeholder="Descrição do produto">
+
+                <select id="p_categoria">
+                    <option value="Pratos do Buffet">Pratos do Buffet</option>
+                    <option value="Salgados e Petiscos">Salgados e Petiscos</option>
+                    <option value="Doces e Sobremesas">Doces e Sobremesas</option>
+                </select>
+
+                <input id="p_preco" type="number" placeholder="Preço (R$)">
+                <input id="p_imagem" type="file" accept="image/*">
+
+                <img class="preview" id="previewProduto">
+
+                <button class="btn-primary" onclick="addProduto()">Salvar Produto</button>
+            </div>
+
+            <table id="tabelaProdutos">
+                <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
