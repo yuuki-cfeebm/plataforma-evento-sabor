@@ -4,7 +4,22 @@ const tel = document.querySelector('#telefone')
 const senha = document.querySelector('#senha')
 const confirmar = document.querySelector('#confirmar-senha')
 
+const infoAdmin = {
+  email: "admin@gmail.com",
+  senha: "admin123"
+}
+
+
+
+let adminCadastrado = []
+adminCadastrado = infoAdmin
+
+localStorage.setItem("adminCadastrado", JSON.stringify(adminCadastrado))
+
 let usuariosCadastrados = JSON.parse(localStorage.getItem('usuariosCadastrados') || "[]")
+
+usuariosCadastrados.push(infoAdmin)
+console.log(usuariosCadastrados)
 
 document.getElementById('formCadastro').addEventListener('submit', (event) => {
   event.preventDefault();
