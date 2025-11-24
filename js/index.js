@@ -53,6 +53,24 @@ buttonsPedido.forEach(button => {
   })
 })
 
+const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
+
+//botão personalido para Admin
+if(usuarioLogado.email == "email@gmail.com" || usuarioLogado.senha == "admin123") {
+  const buttonsNav = document.querySelector('.buttons-nav')
+  const btnAdmin = document.createElement('button')
+  btnAdmin.id = "btn-admin"
+  btnAdmin.innerHTML = `
+    botao admin
+  `
+  buttonsNav.appendChild(btnAdmin)
+
+  btnAdmin.addEventListener('click', () => {
+    
+  })
+
+}
+
 // ======== BOTÃO VOLTAR AO TOPO ========
 const btnVoltarTopo = document.querySelector('#topBtn')
 
@@ -60,6 +78,3 @@ btnVoltarTopo.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
   console.log("topo")
 });
-
-const buttonsNav = document.querySelector('.buttons-nav')
-const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
