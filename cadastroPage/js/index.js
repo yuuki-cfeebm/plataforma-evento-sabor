@@ -9,8 +9,6 @@ const infoAdmin = {
   senha: "admin123"
 }
 
-
-
 let adminCadastrado = []
 adminCadastrado = infoAdmin
 
