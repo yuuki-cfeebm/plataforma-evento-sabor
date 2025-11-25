@@ -28,7 +28,7 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao 2',
       descricaoProduto: 'Deliciosa prato com queijo sem glutem',
-      preco: '25,00',
+      preco: 25.60,
       restricao: 'glutem'
     },
     {
@@ -37,7 +37,7 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'pratao',
       descricaoProduto: 'Deliciosa torrada com queijo sem glutem',
-      preco: '12,00',
+      preco: 12.00,
       restricao: 'glutem'
     },
     {
@@ -46,7 +46,7 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Doce bacana',
       descricaoProduto: 'Doce bem bacana bem vegano aaaaa',
-      preco: '20,00',
+      preco: 20.00,
       restricao: 'vegano'
     },
     {
@@ -55,7 +55,7 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado bacana 2',
       descricaoProduto: 'Deliciosa torrada com queijo bem vegano',
-      preco: '12,00',
+      preco: 12.00,
       restricao: 'vegano'
     },
     {
@@ -64,7 +64,7 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'Dossao legaal',
       descricaoProduto: 'Delicioso doce legal bem vegano aaaaa',
-      preco: '60.50',
+      preco: 60.50,
       restricao: 'vegano'
     },
     {
@@ -73,7 +73,16 @@ const produtos = [
       setImgCard: 'img/torradav2.png',
       nomeProduto: 'salgado 5 item',
       descricaoProduto: 'Delicioso doce legal sem glute aaaam',
-      preco: '60,00',
+      preco: 60.00,
+      restricao: 'glutem'
+    },
+    {
+      id: 7,
+      categoria: 'pratos',
+      setImgCard: 'img/torradav2.png',
+      nomeProduto: 'prato 5 ',
+      descricaoProduto: 'prato sem glute aaaam',
+      preco: 60.00,
       restricao: 'glutem'
     }
 ]
@@ -155,7 +164,7 @@ function card(id, categoria, setImgCard, nomeProduto, descricaoProduto, preco) {
   const spanCardPreco = document.createElement('span')
   const pCardPreco = document.createElement('p')
   spanCardPreco.textContent = "Preço:"
-  pCardPreco.textContent = `R$ ${preco}`
+  pCardPreco.textContent = `${preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`
 
   cardTexto.appendChild(spanCardTexto)
   cardTexto.appendChild(pCardTexto)
@@ -263,9 +272,15 @@ function controlarEstadoCarrinho() {
   const bodyCarrinho = document.querySelector('.body-carrinho')
   bodyCarrinho.innerHTML = ""
   
+  let totalCarrinho = 0
+
   produtosCarrinho.forEach(produto => {
     bodyCarrinho.innerHTML += cardCarrinho(produto)
+
+    totalCarrinho += produto.preco
   })
+
+  document.querySelector('#preco-total').textContent = totalCarrinho.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
 
 function cardCarrinho(produto) {
@@ -277,7 +292,7 @@ function cardCarrinho(produto) {
       <span class="titulo">${produto.nomeProduto}</span>
       <span class="descricao">${produto.descricaoProduto}</span>
       <div class="preco">
-        <span>${produto.preco}</span>
+        <span>${produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
       </div>
     </div>
     <div class="quantidade">
@@ -308,6 +323,9 @@ document.querySelector('#btn-fechar-modal').addEventListener('click', () => {
   modalCarrinho.classList.remove('mostrar-modal-carrinho')
 })
 
+document.querySelector('#btn-finalizar-pedido').addEventListener('click', () => {
+  JSON.parse(localStorage.getItem('usuarioLogado')) == null ? window.top.location.href = "../cadastroPage/index.html" : alert("Redirecionar para uatizapi, ainda não tem")
+})
 //filtros
 let categoriaAtual = 'todos'
 
