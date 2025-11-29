@@ -199,6 +199,8 @@ nav {
 
 /*modal carrinho*/
 .modal-carrinho {
+  display: flex;
+  justify-content: center;
   position: absolute;
   width: 500px;
   height: 100vh;
@@ -217,8 +219,12 @@ nav {
 }
 
 .container-modal-carrinho {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   padding: 16px;
-  /* height: 100%; */
+  box-sizing: border-box;
 }
 
 .header-carrinho {
@@ -241,17 +247,68 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  /* background: red; */
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.footer-carrinho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 100%;
+  height: 80px;
+  /* border: 2px solid var(--primary-color); */
+  flex-shrink: 0;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  box-sizing: border-box;
+}
+
+.total {
+  border: 2px solid var(--primary-color);
+  border-radius: 16px;
+  /* background: var(--primary-color); */
+  padding: 8px 24px;
+}
+
+.span-total {
+  color: var(--cinza-3);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#preco-total {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.finalizar-pedido {
+  background: var(--primary-color);
+  padding: 20px 26px;
+  color: white;
+  font-size: 20px;
+  border-radius: 16px;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.finalizar-pedido:hover {
+  background: none;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .card-carrinho {
   display: flex;
-  /* gap: 16px; */
   border: 2px solid red;
   border-radius: 16px;
   overflow: hidden;
+  min-height: 100px;
+  flex-shrink: 0;
 }
 
 #img-card-carrinho {
@@ -299,6 +356,8 @@ nav {
   transition: 0.2s ease-in-out;
   background: rgba(0, 0, 0, 0.5);
 }
+
+
 /*----------*/
 
 main {
