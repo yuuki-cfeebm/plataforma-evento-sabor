@@ -702,9 +702,17 @@ footer {
 
 /*---responsividade---*/
 
-@media(max-width: 1350px) {
+@media(max-width: 1366px) {
+  .logo-header {
+    width: 60px;
+  }
+
+  .items-nav a {
+    padding: 12px 12px 12px 8px
+  }
+
   .texto-grande {
-    font-size: 68px;
+    font-size: 62px;
   }
 
   .img-column-right {
@@ -719,7 +727,7 @@ footer {
 
 @media(max-width: 1214px) {
   .texto-grande {
-    font-size: 60px;
+    font-size: 56px;
   }
 
   .titulo-sobre {
