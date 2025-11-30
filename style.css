@@ -162,7 +162,8 @@ main {
 .column-left {
   display: flex;
   flex-direction: column;
-  max-width: 60%;
+  /* justify-content: space-between; */
+  max-width: 900px;
   width: 100%;
   gap: 36px;
 }
@@ -220,7 +221,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 30%;
+  max-width: 450px;
   width: 100%;
   gap: 24px;
 }
@@ -338,6 +339,7 @@ main {
   width: 100%;
   gap: 16px;
   padding: 16px;
+  text-align: center;
 }
 
 .produtos-header h2 {
@@ -409,6 +411,7 @@ main {
 
 /*carousel secundario*/
 .linha2 {
+  max-width: 1300px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -421,7 +424,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding: 16px 24px;
 }
 
 .container-carousel.subcarousel {
@@ -696,8 +699,82 @@ footer {
   }
 }
 
+/*---responsividade---*/
+
+@media(max-width: 1350px) {
+  .texto-grande {
+    font-size: 68px;
+  }
+
+  .img-column-right {
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .carousel {
+    max-width: 1000px;
+  }
+}
+
+@media(max-width: 1214px) {
+  .texto-grande {
+    font-size: 60px;
+  }
+
+  .titulo-sobre {
+    font-size: 60px;
+  }
+
+  .item-sobre p {
+    font-size: 24px;
+  }
+
+  .container-foto {
+    width: 350px;
+  }
+}
+
+@media(max-width: 1100px) {
+  .texto-grande {
+    font-size: 40px;
+  }
+
+  .titulo-sobre {
+    font-size: 46px;
+  }
+
+  .container-foto {
+    width: 260px;
+  }
+
+  .titulo-sobre-buffet p{
+    font-size: 32px;
+  }
+
+  .item-sobre-buffet p {
+    font-size: 20px;
+  }
+
+  .item-sobre p {
+    font-size: 20px;
+  }
+
+  .texto-medio {
+    font-size:24px
+  }
+
+  .carousel {
+    max-width: 600px;
+  }
+
+  .titulo-carousel {
+    font-size: 28px;
+  }
+
+  .card {
+    max-width: 200px;
+  }
+}
 
 
-
-
-
+/*mais de 1072 cria scroll x*/
